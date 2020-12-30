@@ -19,4 +19,4 @@ app.use(morgan('dev'));
 const recipesRouter = require('./routes/recipes');
 app.use('/recipes', recipesRouter);
 
-app.listen(3000, () => console.log('server started'));
+app.listen(process.env.PORT || 3000, () => console.log('server started'));
