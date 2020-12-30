@@ -4,7 +4,6 @@ const multer = require('multer');
 const path = require('path');
 const helpers = require('../helpers');
 
-// empty commit
 const normalizeRecipes = (recipes) => {
   return recipes.map((item) => {
     if (item.image) {
