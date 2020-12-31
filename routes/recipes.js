@@ -5,10 +5,9 @@ const path = require('path');
 const helpers = require('../helpers');
 
 const normalizeRecipes = (recipes) => {
-  console.log('==== recipes ====', recipes);
   return recipes.map((item) => {
     if (item.image) {
-      item.image = `http://${process.env.BASE_URL}${process.env.PORT ? ':' + process.env.PORT : ''}/static/${item.image}`;
+      item.image = `${process.env.BASE_URL}${process.env.PORT ? ':' + process.env.PORT : ''}/static/${item.image}`;
     }
     if (item.ingredients) {
       item.ingredients = JSON.parse(item.ingredients);
