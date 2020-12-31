@@ -7,7 +7,7 @@ const helpers = require('../helpers');
 const normalizeRecipes = (recipes) => {
   return recipes.map((item) => {
     if (item.image) {
-      item.image = `${process.env.BASE_URL}/static/${item.image}`;
+      item.image = `${process.env.BASE_URL}static/${item.image}`;
     }
     if (item.ingredients) {
       item.ingredients = JSON.parse(item.ingredients);
