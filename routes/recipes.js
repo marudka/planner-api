@@ -69,6 +69,14 @@ router.patch('/:id', getRecipe, async (req, res) => {
     res.recipe.name = req.body.name
   }
 
+  if (req.body.description) {
+    res.recipe.description = req.body.description
+  }
+
+  if (req.body.ingredients) {
+    res.recipe.ingredients = req.body.ingredients
+  }
+
   if (req.body.days) {
     res.recipe.days = {
       ...res.recipe.days,
@@ -88,7 +96,7 @@ router.patch('/:id', getRecipe, async (req, res) => {
 router.delete('/:id', getRecipe, async (req, res) => {
   try {
     await res.recipe.remove();
-    res.json({ message: 'Deleted This Subscriber' })
+    res.json({ message: 'Recipe removed' })
   } catch(err) {
     res.status(500).json({ message: err.message })
   }
