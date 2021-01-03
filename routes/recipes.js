@@ -52,7 +52,7 @@ router.post('/', upload, async (req, res) => {
     name: req.body.name,
     description: req.body.description,
     ingredients: req.body.ingredients,
-    image: req.file ? req.file.filename : null
+    image: req.file ? req.file.filename : ''
   });
 
   try {
