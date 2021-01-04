@@ -6,11 +6,11 @@ const helpers = require('../helpers');
 
 const normalizeRecipes = (recipes) => {
   return recipes.map((item) => {
-    if (item.image) {
+    if (Boolean(item.image)) {
       item.image = `${process.env.BASE_URL}static/${item.image}`;
     }
     if (item.ingredients) {
-      item.ingredients = JSON.parse(item.ingredients);
+      item.ingredients = Array.isArray(item.ingredients) ? [] : JSON.parse(item.ingredients);
     }
     return item;
   })
@@ -78,10 +78,7 @@ router.patch('/:id', getRecipe, async (req, res) => {
   }
 
   if (req.body.days) {
-    res.recipe.days = {
-      ...res.recipe.days,
-      ...req.body.days
-    }
+    res.recipe.days = req.body.days
   }
 
   try {
