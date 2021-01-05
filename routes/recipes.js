@@ -10,7 +10,7 @@ const normalizeRecipes = (recipes) => {
       item.image = `${process.env.BASE_URL}static/${item.image}`;
     }
     if (item.ingredients) {
-      item.ingredients = Array.isArray(item.ingredients) ? [] : JSON.parse(item.ingredients);
+      item.ingredients = item.ingredients.length ? JSON.parse(item.ingredients) : [];
     }
     return item;
   })
