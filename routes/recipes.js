@@ -83,9 +83,12 @@ router.patch('/:id', getRecipe, async (req, res) => {
 
   try {
     const updatedRecipe = await res.recipe.save();
-    res.json(updatedRecipe)
+    if (req.body.days) {
+      await req.socket.emit('RECIPE_ADDED_TO_DAY', updatedRecipe);
+    }
+    await res.json(updatedRecipe)
   } catch {
-    res.status(400).json({ message: 'blad' })
+    res.status(400).json({ message: 'patch error' })
   }
 });
 
