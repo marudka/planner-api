@@ -52,6 +52,10 @@ router.post('/', upload, async (req, res) => {
     name: req.body.name,
     description: req.body.description,
     ingredients: req.body.ingredients,
+    isVege: req.body.isVege,
+    isGlutenFree: req.body.isGlutenFree,
+    portions: req.body.portions,
+    calories: req.body.calories,
     image: req.file ? req.file.filename : ''
   });
 
@@ -66,20 +70,31 @@ router.post('/', upload, async (req, res) => {
 // Update one recipe
 router.patch('/:id', getRecipe, async (req, res) => {
   if (req.body.name) {
-    res.recipe.name = req.body.name
+    res.recipe.name = req.body.name;
   }
 
   if (req.body.description) {
-    res.recipe.description = req.body.description
+    res.recipe.description = req.body.description;
   }
 
   if (req.body.ingredients) {
-    res.recipe.ingredients = req.body.ingredients
+    res.recipe.ingredients = req.body.ingredients;
   }
 
   if (req.body.days) {
-    res.recipe.days = req.body.days
+    res.recipe.days = req.body.days;
   }
+
+  if (req.body.portions) {
+    res.recipe.portions = req.body.portions;
+  }
+
+  if (req.body.calories) {
+    res.recipe.calories = req.body.calories;
+  }
+
+  res.recipe.isVege = req.body.isVege || false;
+  res.recipe.isGlutenFree = req.body.isGlutenFree || false;
 
   try {
     const updatedRecipe = await res.recipe.save();

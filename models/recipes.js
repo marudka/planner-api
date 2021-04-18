@@ -23,7 +23,11 @@ const recipeSchema = new mongoose.Schema({
   },
   days: {
     type: Object
-  }
+  },
+  isVege: Boolean,
+  isGlutenFree: Boolean,
+  portions: String,
+  calories: String
 });
 
 module.exports = mongoose.model('Recipe', recipeSchema);
