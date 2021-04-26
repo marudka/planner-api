@@ -1,2 +1,2 @@
 # planner-api
-Planner api (empty commit)
+Planner api (empty)
