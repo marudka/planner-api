@@ -1,2 +1,2 @@
 # planner-api
-Planner api (test)
+Planner api 
