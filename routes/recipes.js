@@ -33,7 +33,7 @@ const Recipe = require('../models/recipes');
 // Get all recipes
 router.get('/', async (req, res) => {
   try {
-    const recipes = await Recipe.find();
+    const recipes = await Recipe.find().sort({ '_id': -1 });
     const normalizedRecipes = normalizeRecipes(recipes);
     res.json(normalizedRecipes);
   } catch (err) {
